@@ -113,19 +113,20 @@ function handleInstanceConfigure(request, response, next){
   callServiceNow(request.body.url, data, request.body.user, request.body.password) ;
 }
 
-function callServiceNow(url, data, user, password){{
+function callServiceNow(url, data, user, password){
   var auth = {
     'user': user,
     'pass': password,
   };
   console.log(auth);
-  request.post({
+  var options = {
     headers: {'content-type' : 'application/json'},
     url:     url,
     json: true,
     body:    JSON.stringify(data),
     'auth': auth
-  })
+  };
+  request.post(options)
   .then(function(response){
       console.log(response.statusCode);
   })
