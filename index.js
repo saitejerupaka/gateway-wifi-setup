@@ -83,6 +83,7 @@ function startServer() {
   // Define the handler methods for the various URLs we handle
   server.get('/*', handleCaptive);
   server.get('/', handleRoot);
+  server.get('/saitej', handleSaitej);
   server.get('/wifi-setup', handleWiFiSetup);
   server.post('/connecting', handleConnecting);
   server.use(Express.static(path.join(__dirname, 'templates')));
@@ -91,6 +92,10 @@ function startServer() {
   // XXX: for first-time this is on an open access point.
   server.listen(8080);
   console.log('HTTP server listening');
+}
+
+function handleSaitej(request, response, next){
+  response.send("Saitej Answered");
 }
 
 function getTemplate(filename) {
@@ -254,9 +259,9 @@ function handleConnecting(request, response) {
 }
 
 function startGateway() {
-  return run(platform.startGateway)
-    .then((out) => console.log('Gateway started', out))
-    .catch((err) => console.error('Error starting Gateway:', err));
+  // return run(platform.startGateway)
+  //   .then((out) => console.log('Gateway started', out))
+  //   .catch((err) => console.error('Error starting Gateway:', err));
 }
 
 function stopWifiService() {
