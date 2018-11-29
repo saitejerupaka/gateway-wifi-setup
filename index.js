@@ -10,6 +10,7 @@ const platform = require('./platform.js');
 const wifi = require('./wifi.js');
 const wait = require('./wait.js');
 const path = require('path');
+const request = require('request');
 
 Handlebars.registerHelper('escapeQuotes', function(str) {
   return new Handlebars.SafeString(str.replace(/'/, '\\\''));
@@ -104,6 +105,22 @@ function handleInstanceConfigure(request, response, next){
         return;
     };
     console.log("File has been created");
+  });
+  var data = {
+    "hub_id" : "9898",
+    "hub_name" : "SN_1"
+  }
+  callServiceNow(request.body.url, data, request.body.user, request.body.password) ;
+}
+
+function callServiceNow(url, data, user, password){
+  var auth = "Basic " + new Buffer(user + ":" + password).toString("base64");
+  request.post({
+    headers: {'content-type' : 'application/json', "Authorization" : auth},
+    url:     url,
+    body:    data
+  }, function(error, response, body){
+    console.log(body);
   });
 }
 
