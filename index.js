@@ -111,7 +111,7 @@ function handleInstanceConfigure(request, response, next){
     "hub_name" : "SN_1"
   }
   var registerUrl = request.body.url + 'api/sn_hack_iot/iot_client_api/register_hub';
-  callServiceNow(, data, request.body.user, request.body.password) ;
+  callServiceNow(registerUrl, data, request.body.user, request.body.password) ;
   response.send("Success");
 }
 
