@@ -107,8 +107,8 @@ function handleInstanceConfigure(request, response, next){
     console.log("File has been created");
   });
   var data = {
-    "hub_id" : "9898",
-    "hub_name" : "SN_1"
+    "id" : "9898",
+    "name" : "SN_1"
   }
   var registerUrl = request.body.url + 'api/sn_hack_iot/iot_client_api/register_hub';
   callServiceNow(registerUrl, data, request.body.user, request.body.password) ;
@@ -132,7 +132,7 @@ function callServiceNow(url, data, user, password){
   request(options, function (error, response, body) {
     //console.log('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    //console.log('body:', body); // Print the HTML for the Google homepage.
+    console.log('body:', body); // Print the HTML for the Google homepage.
     return;
 
   });
