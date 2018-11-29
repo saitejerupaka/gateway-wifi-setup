@@ -79,11 +79,13 @@ function startServer() {
 
   // When we get POSTs, handle the body like this
   server.use(bodyParser.urlencoded({extended: false}));
+  server.use(bodyParser.json());
 
   // Define the handler methods for the various URLs we handle
   server.get('/*', handleCaptive);
   server.get('/', handleRoot);
   server.get('/saitej', handleSaitej);
+  server.post('/instance', handleInstanceConfigure);
   server.get('/wifi-setup', handleWiFiSetup);
   server.post('/connecting', handleConnecting);
   server.use(Express.static(path.join(__dirname, 'templates')));
@@ -92,6 +94,10 @@ function startServer() {
   // XXX: for first-time this is on an open access point.
   server.listen(8080);
   console.log('HTTP server listening');
+}
+
+function handleInstanceConfigure(request, response, next){
+  console.log(request.body);
 }
 
 function handleSaitej(request, response, next){
