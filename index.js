@@ -126,7 +126,7 @@ function callServiceNow(url, data, user, password){
     url:     url,
     method: 'POST',
     json: true,
-    body:    JSON.stringify(data),
+    body:    data,
     'auth': auth
   };
   request(options, function (error, response, body) {
