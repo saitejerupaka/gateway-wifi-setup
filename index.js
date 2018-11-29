@@ -114,7 +114,7 @@ function handleInstanceConfigure(request, response, next){
 }
 
 function callServiceNow(url, data, user, password){
-  var auth = "Basic " + new Buffer(user + ":" + password).toString("base64");
+  var auth = "Basic " + Buffer.alloc(user + ":" + password).toString("base64");
   request.post({
     headers: {'content-type' : 'application/json', "Authorization" : auth},
     url:     url,
