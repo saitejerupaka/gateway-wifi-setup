@@ -127,11 +127,9 @@ function callServiceNow(url, data, user, password){
     body:    JSON.stringify(data),
     'auth': auth
   };
-  request(options)
-  .then(function(response){
+  request(options).then(function(response){
       console.log(response.statusCode);
-  })
-  .catch(function(error){
+  }).catch(function(error){
     console.log(error);
     return;
   });
