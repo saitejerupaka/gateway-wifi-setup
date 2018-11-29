@@ -113,13 +113,18 @@ function handleInstanceConfigure(request, response, next){
   callServiceNow(request.body.url, data, request.body.user, request.body.password) ;
 }
 
-function callServiceNow(url, data, user, password){
-  var auth = "Basic " + Buffer.alloc(15, user + ":" + password, "base64");
+function callServiceNow(url, data, user, password){{
+  var auth = {
+    'user': user,
+    'pass': password,
+  };
   console.log(auth);
   request.post({
-    headers: {'content-type' : 'application/json', "Authorization" : auth},
+    headers: {'content-type' : 'application/json'},
     url:     url,
-    body:    JSON.stringify(data)
+    json: true,
+    body:    JSON.stringify(data),
+    'auth': auth
   })
   .then(function(response){
       console.log(response.statusCode);
