@@ -256,7 +256,7 @@ function handleConnecting(request, response) {
     .catch((error) => {
       console.log('General Error:', error);
     });
-}
+}lea
 
 function startGateway() {
   // return run(platform.startGateway)
@@ -265,7 +265,7 @@ function startGateway() {
 }
 
 function stopWifiService() {
-  return run(platform.stopWifiService)
-    .then((out) => console.log('VWifi service stopped', out))
-    .catch((err) => console.error('Error stopping wifi service:', err));
+  // return run(platform.stopWifiService)
+  //   .then((out) => console.log('VWifi service stopped', out))
+  //   .catch((err) => console.error('Error stopping wifi service:', err));
 }
