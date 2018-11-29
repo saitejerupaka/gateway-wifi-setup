@@ -122,11 +122,12 @@ function callServiceNow(url, data, user, password){
   var options = {
     headers: {'content-type' : 'application/json'},
     url:     url,
+    method: 'POST',
     json: true,
     body:    JSON.stringify(data),
     'auth': auth
   };
-  request.post(options)
+  request(options)
   .then(function(response){
       console.log(response.statusCode);
   })
