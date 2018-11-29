@@ -99,7 +99,7 @@ function startServer() {
 }
 
 function handleDeviceSignal(request, response, next){
-  let rawdata = fs.readFileSync('./instance.json');  
+  let rawdata = fs.readFileSync("./instance.json");  
   //let instance = JSON.parse(rawdata);  
   console.log(rawdata);
   response.send('thanks');
