@@ -99,7 +99,7 @@ function startServer() {
 
 function handleInstanceConfigure(request, response, next){
   console.log(request.body);
-  fs.writeFile("~/instance.json", JSON.stringify(request.body), (err) => {
+  fs.writeFile("./instance.json", JSON.stringify(request.body), (err) => {
     if (err) {
         console.error(err);
         return;
