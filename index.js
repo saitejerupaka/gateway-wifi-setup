@@ -120,8 +120,11 @@ function callServiceNow(url, data, user, password){
     headers: {'content-type' : 'application/json', "Authorization" : auth},
     url:     url,
     body:    data
-  }, function(error, response, body){
+  })
+  .then(function(response){
       console.log(response.statusCode);
+  })
+  .catch(function(error){
   });
 }
 
