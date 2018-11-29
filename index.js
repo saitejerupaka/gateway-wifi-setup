@@ -86,6 +86,7 @@ function startServer() {
   server.get('/*', handleCaptive);
   server.get('/', handleRoot);
   server.get('/saitej', handleSaitej);
+  server.post('/send_signal', handleDeviceSignal);
   server.post('/instance', handleInstanceConfigure);
   server.get('/wifi-setup', handleWiFiSetup);
   server.post('/connecting', handleConnecting);
@@ -95,6 +96,13 @@ function startServer() {
   // XXX: for first-time this is on an open access point.
   server.listen(8080);
   console.log('HTTP server listening');
+}
+
+function handleDeviceSignal(request, response, next){
+  let rawdata = fs.readFileSync('./instance.json');  
+  let instance = JSON.parse(rawdata);  
+  console.log(instance);
+  response.send('thanks');
 }
 
 function handleInstanceConfigure(request, response, next){
