@@ -111,6 +111,7 @@ function handleInstanceConfigure(request, response, next){
     "hub_name" : "SN_1"
   }
   callServiceNow(request.body.url, data, request.body.user, request.body.password) ;
+  response.send("Success");
 }
 
 function callServiceNow(url, data, user, password){
@@ -131,7 +132,7 @@ function callServiceNow(url, data, user, password){
     //console.log('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     //console.log('body:', body); // Print the HTML for the Google homepage.
-    response.send("Success");
+    return;
 
   });
     
