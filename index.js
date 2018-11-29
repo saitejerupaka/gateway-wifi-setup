@@ -119,12 +119,14 @@ function callServiceNow(url, data, user, password){
   request.post({
     headers: {'content-type' : 'application/json', "Authorization" : auth},
     url:     url,
-    body:    data
+    body:    JSON.stringify(data)
   })
   .then(function(response){
       console.log(response.statusCode);
   })
   .catch(function(error){
+    console.log(error);
+    return;
   });
 }
 
