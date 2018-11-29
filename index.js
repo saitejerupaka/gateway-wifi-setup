@@ -87,6 +87,7 @@ function startServer() {
   server.get('/', handleRoot);
   server.get('/saitej', handleSaitej);
   server.post('/send_signal', handleDeviceSignal);
+  server.post('/register_device', handleDeviceRegistration);
   server.post('/instance', handleInstanceConfigure);
   server.get('/wifi-setup', handleWiFiSetup);
   server.post('/connecting', handleConnecting);
@@ -96,6 +97,20 @@ function startServer() {
   // XXX: for first-time this is on an open access point.
   server.listen(8080);
   console.log('HTTP server listening');
+}
+
+function handleDeviceRegistration(request, response, next){
+  let rawdata = fs.readFileSync("./instance.txt", 'utf8');  
+  let instance = JSON.parse(rawdata);  
+  console.log(rawdata);
+  var signalUrl = instance.url + 'api/sn_hack_iot/iot_client_api/register_device';
+  var data = {
+    "device_id": "1234",
+    "evice_name": "test1_device",
+    "hub_id": "9898"
+  }
+  callServiceNow(signalUrl, data, instance.user, instance.password);
+  response.send('device');
 }
 
 function handleDeviceSignal(request, response, next){
