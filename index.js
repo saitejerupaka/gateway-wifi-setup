@@ -98,6 +98,13 @@ function startServer() {
 
 function handleInstanceConfigure(request, response, next){
   console.log(request.body);
+  fs.writeFile("./instance.json", JSON.stringify(sampleObject), (err) => {
+    if (err) {
+        console.error(err);
+        return;
+    };
+    console.log("File has been created");
+  });
 }
 
 function handleSaitej(request, response, next){
