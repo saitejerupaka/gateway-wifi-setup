@@ -100,8 +100,13 @@ function startServer() {
 
 function handleDeviceSignal(request, response, next){
   let rawdata = fs.readFileSync("./instance.txt", 'utf8');  
-  //let instance = JSON.parse(rawdata);  
+  let instance = JSON.parse(rawdata);  
   console.log(rawdata);
+  var signalUrl = instance.url + 'api/sn_hack_iot/iot_client_api/send_signal';
+  var data = {
+    'device_id': '1234'
+  }
+  callServiceNow(signalUrl, data, instance.user, instance.password);
   response.send('thanks');
 }
 
