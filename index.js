@@ -256,7 +256,7 @@ function handleConnecting(request, response) {
     .catch((error) => {
       console.log('General Error:', error);
     });
-}lea
+}
 
 function startGateway() {
   // return run(platform.startGateway)
