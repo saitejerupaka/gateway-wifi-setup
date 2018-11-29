@@ -106,7 +106,7 @@ function handleDeviceRegistration(request, response, next){
   var signalUrl = instance.url + 'api/sn_hack_iot/iot_client_api/register_device';
   var data = {
     "device_id": "1234",
-    "evice_name": "test1_device",
+    "device_name": "test1_device",
     "hub_id": "9898"
   }
   callServiceNow(signalUrl, data, instance.user, instance.password);
